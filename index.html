@@ -143,10 +143,12 @@
         .elementoGaleria:hover {
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
             transition: box-shadow 0.3s ease-in-out;
-            filter: brightness(70%);
             transform: scale(1.1); 
             z-index: 1;
-            border: #ddd solid 15px;
+            border: white solid 15px;
+        }
+        .foto:hover {
+            filter: brightness(70%);
         }
         @media (max-width: 600px) {
             .galeria {
@@ -286,12 +288,10 @@
             ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-617.jpg'
             ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-622.jpg'
             ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-64.jpg'
-
         ];
         var randomImg = ArrayImagenes[Math.floor(Math.random() * ArrayImagenes.length)];
         this.src = randomImg;
-        }
-        
+        }        
     </script>
 </body>
 </html>
