@@ -97,7 +97,7 @@
         .galeria {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            gap: 20px;
             /*grid-template-rows: 328px;*/
         }
         .elementoGaleria {
@@ -146,7 +146,7 @@
             filter: brightness(70%);
             transform: scale(1.1); 
             z-index: 1;
-            border: #ddd solid 10px;
+            border: #ddd solid 15px;
         }
         @media (max-width: 600px) {
             .galeria {
@@ -207,22 +207,22 @@
         </div>
         <div class="galeria">
             <div class="elementoGaleria">
-                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_03.jpg" alt="Paisaje 1">
+                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_03.jpg" alt="Paisaje 1" onclick="cambiarImg.call(this)">
             </div>
             <div class="elementoGaleria">
-                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_08.jpg" alt="Paisaje 2">
+                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_08.jpg" alt="Paisaje 2" onclick="cambiarImg.call(this)">
             </div>
             <div class="elementoGaleria">
-                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_06.jpg" alt="Paisaje 3">
+                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_06.jpg" alt="Paisaje 3" onclick="cambiarImg.call(this)">
             </div>
             <div class="elementoGaleria">
-                <img class="foto" src="https://s3-us-west-2.amazonaws.com/artifactuprising/magento/blog/articles/2015-07-20-landscape-photo-tips/2015-07-20-landscape-photo-tips-05.jpg" alt="Paisaje 4">
+                <img class="foto" src="https://s3-us-west-2.amazonaws.com/artifactuprising/magento/blog/articles/2015-07-20-landscape-photo-tips/2015-07-20-landscape-photo-tips-05.jpg" alt="Paisaje 4" onclick="cambiarImg.call(this)">
             </div>
             <div class="elementoGaleria">
-                <img class="foto" src="https://cdn.naturettl.com/wp-content/uploads/2020/04/25152036/how-to-find-great-locations-for-landscape-photography-11-1536x1024.jpg" alt="Paisaje 5">
+                <img class="foto" src="https://cdn.naturettl.com/wp-content/uploads/2020/04/25152036/how-to-find-great-locations-for-landscape-photography-11-1536x1024.jpg" alt="Paisaje 5" onclick="cambiarImg.call(this)">
             </div>
             <div class="elementoGaleria">
-                <img class="foto" src="https://s3-us-west-2.amazonaws.com/artifactuprising/magento/blog/articles/2015-07-20-landscape-photo-tips/2015-07-20-landscape-photo-tips-08.jpg" alt="Paisaje 6">
+                <img class="foto" src="https://s3-us-west-2.amazonaws.com/artifactuprising/magento/blog/articles/2015-07-20-landscape-photo-tips/2015-07-20-landscape-photo-tips-08.jpg" alt="Paisaje 6" onclick="cambiarImg.call(this)">
             </div>
         </div>
     </main>
@@ -257,6 +257,34 @@
                     elemento.classList.add('portrait');
                 }
             });
+        }
+
+        function cambiarImg(){
+        var ArrayImagenes = [
+            'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634322224-S4J0FJ74CJWFVRFIFQ08/Tom+Archer+Ladndscape-8_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1635685373741-RXOLI7SQP0THGF67N4U9/Quiraing+Isle+of+Skye-1_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634328423-8LJT8RGHRTEDROCCSN8X/The+Dark+Hedges+-1_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634638377409-DC5ITMSA26YY364S0VT9/TomArcherPhotography-16_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634337232-LOOYOYFTKYWR5XGV117Z/Tom+Archer+Ladndscape-2_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634359246-VVD75AMOGC3OKNIVMD5E/Tre+Cime+Sunset+-2_1500px-60.jpg?format=500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1635685355076-YFPVQ7FGM98UONY0BZUA/Arnistapi+Midnight+Sun+1x1_1500px-60.jpg?format=750w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634325503-OA7RVAJNWMU0SY8ROJMF/OldManOfStorr_Scotland-1_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634356806-NFNSI7YV1RLP1RWNG7D5/Tom+Archer+Ladndscape-19_1500px-60.jpg?format=1000w'
+            ,'https://photographylife.com/wp-content/uploads/2016/06/Mass.jpg'
+            ,'https://photographylife.com/wp-content/uploads/2017/01/Low-angle-composition.jpg'
+            ,'https://photographylife.com/wp-content/uploads/2014/02/Kite-Launcher.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-3.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-65.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-8.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-2.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-5.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-617.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-622.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-64.jpg'
+
+        ];
+        var randomImg = ArrayImagenes[Math.floor(Math.random() * ArrayImagenes.length)];
+        this.src = randomImg;
         }
         
     </script>
