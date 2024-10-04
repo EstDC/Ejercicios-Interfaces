@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1, 2 y 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 10px;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 18px;
+        }
+        nav {
+            width: 100%;
+            margin: auto;
+            display: flex;
+            height: 60px;
+            justify-content: space-around;
+            align-items: center;
+            padding: 5px 0;
+            background-color: black;
+        }
+        nav a {
+            margin: 10px;
+            flex: 1;
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+            padding: 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.5s ease-out;
+        }
+        nav a:hover,
+        nav a:focus {
+            background-color: white;
+            color: black;
+            border-color: white;
+        }
+        .menuOpciones {
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .opciones {
+            font-size: 18px;
+            cursor: pointer;
+            flex: 1 1 auto;
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+            padding: 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.5s ease-out;
+            min-width: 150px;
+        }
+        .desplegable {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .opcionesContenido {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #f1f1f1;
+            z-index: 1;
+        }
+        .opcionesContenido a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        .opcionesContenido a:hover {
+            background-color: #ddd;
+        }
+        .desplegable:hover .opcionesContenido {
+            display: block;
+        }
+        .desplegable:hover .opciones {
+            background-color: white;
+            color: black;
+            border-color: black;
+        }
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            /*grid-template-rows: 328px;*/
+        }
+        .elementoGaleria {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+        }
+        .foto {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease-in-out;
+        }
+        .elementoGaleria.round,
+        .elementoGaleria.square {
+            aspect-ratio: 1 / 1;
+            border-radius: 5px;
+        }
+        .elementoGaleria.round .foto,
+        .elementoGaleria.square .foto {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .elementoGaleria.round .foto {
+            border-radius: 50%;
+        }
+        .elementoGaleria.portrait {
+            aspect-ratio: 3 / 4;
+        }
+        .elementoGaleria.portrait .foto {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .elementoGaleria:hover {
+            border: white solid 5px;
+            transform: scale(1.1); 
+            z-index: 1;
+        }
+        .foto:hover {
+            filter: brightness(70%);
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        @media (max-width: 600px) {
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+            .menuOpciones {
+                flex-direction: column;
+            }
+            .opciones {
+                width: 100%;
+            }
+            .desplegable {
+                width: 100%;
+            }
+            .opcionesContenido {
+                position: static;
+                box-shadow: none;
+            }
+        }
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .galeria {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1025px) {
+            .galeria {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+    <main>
+        <div class="menuOpciones">
+            <div class="desplegable">
+                <button class="opciones">Layout</button>
+                <div class="opcionesContenido">
+                    <a href="#" onclick="setColumnas(2)">2 Columnas</a>
+                    <a href="#" onclick="setColumnas(3)">3 Columnas</a>
+                    <a href="#" onclick="setColumnas('default')">Original</a>
+                </div>
+            </div>
+            <div class="desplegable">
+                <button class="opciones">Estilo</button>
+                <div class="opcionesContenido">
+                    <a href="#" onclick="setShape('round')">Redondo</a>
+                    <a href="#" onclick="setShape('square')">Cuadrado</a>
+                    <a href="#" onclick="setShape('portrait')">Retrato</a>
+                    <a href="#" onclick="setShape('default')">Original</a>
+                </div>
+            </div>
+        </div>
+        <div class="galeria">
+            <div class="elementoGaleria">
+                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_03.jpg" alt="Paisaje 1" onclick="cambiarImg.call(this)">
+            </div>
+            <div class="elementoGaleria">
+                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_08.jpg" alt="Paisaje 2" onclick="cambiarImg.call(this)">
+            </div>
+            <div class="elementoGaleria">
+                <img class="foto" src="https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_06.jpg" alt="Paisaje 3" onclick="cambiarImg.call(this)">
+            </div>
+            <div class="elementoGaleria">
+                <img class="foto" src="https://s3-us-west-2.amazonaws.com/artifactuprising/magento/blog/articles/2015-07-20-landscape-photo-tips/2015-07-20-landscape-photo-tips-05.jpg" alt="Paisaje 4" onclick="cambiarImg.call(this)">
+            </div>
+            <div class="elementoGaleria">
+                <img class="foto" src="https://cdn.naturettl.com/wp-content/uploads/2020/04/25152036/how-to-find-great-locations-for-landscape-photography-11-1536x1024.jpg" alt="Paisaje 5" onclick="cambiarImg.call(this)">
+            </div>
+            <div class="elementoGaleria">
+                <img class="foto" src="https://s3-us-west-2.amazonaws.com/artifactuprising/magento/blog/articles/2015-07-20-landscape-photo-tips/2015-07-20-landscape-photo-tips-08.jpg" alt="Paisaje 6" onclick="cambiarImg.call(this)">
+            </div>
+        </div>
+    </main>
+    <script>
+        function setColumnas(columnas) {
+            const galeria = document.getElementsByClassName('galeria')[0];
+            if (galeria) {
+                if (columnas === 'default') {
+                    galeria.style.gridTemplateColumns = '';
+                } else {
+                    galeria.style.gridTemplateColumns = `repeat(${columnas}, 1fr)`;
+                }
+            }
+        }
+        function setShape(shape) {
+            const elementosGaleria = document.querySelectorAll('.galeria .elementoGaleria');
+            elementosGaleria.forEach(elemento => {
+                elemento.classList.remove('round', 'square', 'portrait');
+                elemento.style.aspectRatio = '';
+                const img = elemento.querySelector('.foto');
+                img.style.position = '';
+                img.style.top = '';
+                img.style.left = '';
+                img.style.width = '';
+                img.style.height = '';
+                img.style.borderRadius = '';
+                if (shape === 'round') {
+                    elemento.classList.add('round');
+                } else if (shape === 'square') {
+                    elemento.classList.add('square');
+                } else if (shape === 'portrait') {
+                    elemento.classList.add('portrait');
+                }
+            });
+        }
+
+        function cambiarImg(){
+        var ArrayImagenes = ['https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_03.jpg',
+            'https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_08.jpg',
+            'https://cdn.fstoppers.com/media/2020/11/25/90_of_landscape_photography_in_only_20_minutes_06.jpg',
+            'https://s3-us-west-2.amazonaws.com/artifactuprising/magento/blog/articles/2015-07-20-landscape-photo-tips/2015-07-20-landscape-photo-tips-05.jpg',
+            'https://cdn.naturettl.com/wp-content/uploads/2020/04/25152036/how-to-find-great-locations-for-landscape-photography-11-1536x1024.jpg',
+            'https://s3-us-west-2.amazonaws.com/artifactuprising/magento/blog/articles/2015-07-20-landscape-photo-tips/2015-07-20-landscape-photo-tips-08.jpg',
+            'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634322224-S4J0FJ74CJWFVRFIFQ08/Tom+Archer+Ladndscape-8_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1635685373741-RXOLI7SQP0THGF67N4U9/Quiraing+Isle+of+Skye-1_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634328423-8LJT8RGHRTEDROCCSN8X/The+Dark+Hedges+-1_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634638377409-DC5ITMSA26YY364S0VT9/TomArcherPhotography-16_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634337232-LOOYOYFTKYWR5XGV117Z/Tom+Archer+Ladndscape-2_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634359246-VVD75AMOGC3OKNIVMD5E/Tre+Cime+Sunset+-2_1500px-60.jpg?format=500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1635685355076-YFPVQ7FGM98UONY0BZUA/Arnistapi+Midnight+Sun+1x1_1500px-60.jpg?format=750w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634325503-OA7RVAJNWMU0SY8ROJMF/OldManOfStorr_Scotland-1_1500px-60.jpg?format=1500w'
+            ,'https://images.squarespace-cdn.com/content/v1/5824673c2e69cfc8ac1e3cd3/1634634356806-NFNSI7YV1RLP1RWNG7D5/Tom+Archer+Ladndscape-19_1500px-60.jpg?format=1000w'
+            ,'https://photographylife.com/wp-content/uploads/2016/06/Mass.jpg'
+            ,'https://photographylife.com/wp-content/uploads/2017/01/Low-angle-composition.jpg'
+            ,'https://photographylife.com/wp-content/uploads/2014/02/Kite-Launcher.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-3.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-65.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-8.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-2.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-5.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-617.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-622.jpg'
+            ,'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2023/08/landscape-photography-64.jpg'
+
+        ];
+        var randomImg = ArrayImagenes[Math.floor(Math.random() * ArrayImagenes.length)];
+        this.src = randomImg;
+        }
+        
+    </script>
+</body>
+</html>
