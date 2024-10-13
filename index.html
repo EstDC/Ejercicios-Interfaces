@@ -151,6 +151,14 @@
             transition: box-shadow 0.3s ease-in-out;
         }
         @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                flex: none;
+                width: 100%;
+                text-align: center;
+            }
             .galeria {
                 grid-template-columns: 1fr;
             }
